@@ -40,7 +40,7 @@ const CardItem = (props) => {
   }
 
   return (
-<div className='conteiner py-3'>
+<div className='conteiner py-1'>
   
     { 
       props.item.map(obj=>{
@@ -51,6 +51,11 @@ const CardItem = (props) => {
            myId={obj.myId}
            title={obj.title}
            description={obj.description}
+           technology={obj.technology}
+           memory={obj.memory}
+           old_price={obj.old_price}
+           processor={obj.processor}
+           camera={obj.camera}
            price={obj.price}
            img={obj.img}
 

@@ -36,7 +36,9 @@
     transform: rotate(360deg);
   }
 }
-
+body {
+  font-family: Arial;
+}
 
 .col-md-2{
   background: #61dafb;
@@ -58,7 +60,7 @@ a:hover{
   font-size: 1rem;
   color: rgb(85, 6, 6);
   font-weight: 300;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: 'Times New Roman', serif;
 }
 
 #div1{
@@ -77,4 +79,5 @@ a:hover{
   align-items: center;
   justify-content: center;
 }
+
 

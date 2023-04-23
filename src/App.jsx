@@ -8,27 +8,24 @@ import axios from 'axios';
 import Home from './components/Home';
 import {Route, Routes, BrowserRouter as Router} from 'react-router-dom'
 import React from 'react';
-import Favorites from './components/favorites/Favorites'
 import Basket from './components/basket/Basket'
-import Form from './components/Form'
-import Description from './components/Description';
 
 export const AppContext = React.createContext({})
 
 function App() {
 //хранения данных туров
-const [tyrs, setTyrs] = useState([])
+const [products, setproducts] = useState([])
 //для избранных туров
 const [favorites, setFavorites] = useState([])
 //для корзины
 const [overlayItems, setOverlayItems] = useState([])
 useEffect (()=>{
   async function axiosData(){
-    const tyrsData = await axios.get('https://6437b3220c58d3b14576ebd7.mockapi.io/tours')
+    const productsData = await axios.get('https://6437b3220c58d3b14576ebd7.mockapi.io/tours')
     const favoritesData = await axios.get('https://637f91ca2f8f56e28e904e7d.mockapi.io/favorites')
     const cartData = await axios.get('https://6437b3220c58d3b14576ebd7.mockapi.io/cart')
 
-    setTyrs(tyrsData.data)
+    setproducts(productsData.data)
     setFavorites(favoritesData.data)
     setOverlayItems(cartData.data)
   }
@@ -54,8 +51,8 @@ return (
   <AppContext.Provider
   value={
     {
-      tyrs,
-      setTyrs,
+      products,
+      setproducts,
       overlayItems,
       setOverlayItems,
       favorites,
@@ -70,23 +67,13 @@ return (
      <Router>
      <Header/> 
       <Routes>
-        <Route path='/favorites'
-                    element={
-                        <Favorites
-                        favorites={favorites}
-                        setFavorites={setFavorites}
-                        item={tyrs}
-                        overlayItems={overlayItems}
-                        setOverlayItems={setOverlayItems}
-                        />
-                    }
-                /> 
+
     
 
     <Route path='/'
                     element={
                         <Home
-                        item={tyrs}
+                        item={products}
                         overlayItems={overlayItems}
                         setOverlayItems={setOverlayItems}
                         favorites={favorites}
@@ -95,17 +82,8 @@ return (
                     }
                 />
 
-    <Route path='/form'
-                element={
-                        <Form/>
-                    }
-                />
 
-<Route path='/description'
-                element={
-                        <Description/>
-                    }
-                />
+
 
         <Route path='/cart'
                 element={
